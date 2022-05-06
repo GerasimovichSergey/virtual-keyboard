@@ -1,0 +1,59 @@
+* {
+    box-sizing: border-box;
+}
+
+.container {
+    margin: 0 auto;
+}
+
+#textarea {
+    margin: 0 auto;
+    display: block;
+    width: 750px;
+    margin-bottom: 20px;
+}
+
+.keyboard-wrapper {
+    margin: 0 auto;
+    width: 825px;
+    background-color: #888888;
+    color: #ffffff;
+    line-height: 45px;
+    text-align: center;
+
+}
+
+.row {
+    width: 100%;
+    display: flex;
+}
+
+.key {
+    width: 45px;
+    height: 45px;
+    background-color: #3d4b60;
+    margin: 5px;
+    font-size: 21px;
+    font-weight: 500;
+}
+
+.functional {
+    background-color: #161e2a;
+    font-size: 21px;
+    font-weight: 600;
+}
+
+.backspace {
+    width: 155px;
+}
+
+.caps-lock,
+.enter,
+.left-shift,
+.right-shift {
+    width: 100px;
+}
+
+.space {
+    width: 375px;
+}
