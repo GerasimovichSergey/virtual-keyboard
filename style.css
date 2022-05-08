@@ -6,7 +6,7 @@
     margin: 0 auto;
 }
 
-#textarea {
+.textarea {
     margin: 0 auto;
     display: block;
     width: 750px;
@@ -49,11 +49,15 @@
 
 .caps-lock,
 .enter,
-.left-shift,
-.right-shift {
+.left-shift {
     width: 100px;
 }
 
 .space {
-    width: 375px;
+    width: 345px;
+}
+
+.left-ctrl,
+.right-ctrl {
+    width: 60px;
 }
