@@ -139,13 +139,27 @@ function createBtns() {
                     key.innerHTML = '&#9658;'
                 }
 
-
                 key.classList.add('functional');
             }
 
-
-            // key.textContent = keyboardEn[i][j];
             rows[i].append(key);
         }
     }
 }
+
+const keys = document.querySelectorAll('.key');
+
+document.addEventListener('keydown', (event) => {
+    keys.forEach(key => {
+        if (key.textContent === event.key) {
+            key.classList.add('press');
+        };
+
+    })
+})
+
+document.addEventListener('keyup', () => {
+    keys.forEach(key => {
+        key.classList.remove('press');
+    })
+})

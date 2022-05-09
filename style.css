@@ -35,6 +35,7 @@
     margin: 5px;
     font-size: 21px;
     font-weight: 500;
+    border-radius: 5px;
 }
 
 .functional {
@@ -60,4 +61,8 @@
 .left-ctrl,
 .right-ctrl {
     width: 60px;
+}
+
+.press {
+    background-color: #226870;
 }
