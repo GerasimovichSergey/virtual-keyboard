@@ -6,7 +6,24 @@ const keyboardEn = [
     ['ShiftLeft', '\\', 'z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '/', 'ArrowUp', 'ShiftRight'],
     ['ControlLeft', 'Meta', 'AltLeft', ' ', 'AltRight', 'ControlRight', 'ArrowLeft', 'ArrowDown', 'ArrowRight']
 ];
+let keyboardRu = [
+    ['ё', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', 'Backspace'],
+    ['Tab', 'й', 'ц', 'у', 'к', 'е', 'н', 'г', 'ш', 'щ', 'з', 'х', 'ъ', '\\', 'Delete'],
+    ['CapsLock', 'ф', 'ы', 'в', 'а', 'п', 'р', 'о', 'л', 'д', 'ж', 'э', 'Enter'],
+    ['ShiftLeft', '\\', 'я', 'ч', 'с', 'м', 'и', 'т', 'ь', 'б', 'ю', '/', 'ArrowUp', 'ShiftRight'],
+    ['ControlLeft', 'Meta', 'AltLeft', ' ', 'AltRight', 'ControlRight', 'ArrowLeft', 'ArrowDown', 'ArrowRight']
+];
 let language = 'en';
+
+function getLocalStorage() {
+    if (localStorage.getItem('lang')) {
+        const lang = localStorage.getItem('lang');
+
+        lang === 'en' ? language = 'en' : language = 'ru';
+    }
+}
+
+getLocalStorage();
 
 function createElem(name, classList) {
     const elem = document.createElement(name);
@@ -28,7 +45,7 @@ function createTextArea() {
     const textArea = createElem('textarea', 'textarea');
     textArea.name = 'text';
     textArea.cols = '70';
-    textArea.rows = '10';
+    textArea.rows = '5';
     container.append(textArea);
 }
 
@@ -49,94 +66,101 @@ function createKeyboardRows() {
         keyboardWrapper.append(row);
     }
 
-    createBtns();
+    language === 'en' ? createBtns(keyboardEn) : createBtns(keyboardRu);
 }
 
 createKeyboardRows();
 
-function createBtns() {
+function createBtns(lang) {
     const rows = document.querySelectorAll('.row');
 
-    for (let i = 0; i < keyboardEn.length; i++) {
-        for (let j = 0; j < keyboardEn[i].length; j++) {
+    rows.forEach(row => {
+        row.innerHTML = '';
+    })
+
+    for (let i = 0; i < lang.length; i++) {
+        for (let j = 0; j < lang[i].length; j++) {
             const key = createElem('div', 'key');
 
-            key.textContent = keyboardEn[i][j];
+            key.textContent = lang[i][j];
 
-            if (keyboardEn[i][j] === ' ') {
+            if (lang[i][j] === ' ') {
                 key.classList.add('space');
             }
 
-            if (keyboardEn[i][j] === 'Backspace'
-                || keyboardEn[i][j] === 'Tab'
-                || keyboardEn[i][j] === 'Delete'
-                || keyboardEn[i][j] === 'CapsLock'
-                || keyboardEn[i][j] === 'Enter'
-                || keyboardEn[i][j] === 'ShiftLeft'
-                || keyboardEn[i][j] === 'ShiftRight'
-                || keyboardEn[i][j] === 'ArrowUp'
-                || keyboardEn[i][j] === 'ControlLeft'
-                || keyboardEn[i][j] === 'ControlRight'
-                || keyboardEn[i][j] === 'Meta'
-                || keyboardEn[i][j] === 'AltLeft'
-                || keyboardEn[i][j] === 'AltRight'
-                || keyboardEn[i][j] === 'ArrowLeft'
-                || keyboardEn[i][j] === 'ArrowDown'
-                || keyboardEn[i][j] === 'ArrowRight') {
+            if (lang[i][j] === 'Backspace'
+                || lang[i][j] === 'Tab'
+                || lang[i][j] === 'Delete'
+                || lang[i][j] === 'CapsLock'
+                || lang[i][j] === 'Enter'
+                || lang[i][j] === 'ShiftLeft'
+                || lang[i][j] === 'ShiftRight'
+                || lang[i][j] === 'ArrowUp'
+                || lang[i][j] === 'ControlLeft'
+                || lang[i][j] === 'ControlRight'
+                || lang[i][j] === 'Meta'
+                || lang[i][j] === 'AltLeft'
+                || lang[i][j] === 'AltRight'
+                || lang[i][j] === 'ArrowLeft'
+                || lang[i][j] === 'ArrowDown'
+                || lang[i][j] === 'ArrowRight') {
 
-                if (keyboardEn[i][j] === 'Backspace') {
+                if (lang[i][j] === 'Backspace') {
                     key.classList.add('backspace');
                 }
-                if (keyboardEn[i][j] === 'Tab') {
+                if (lang[i][j] === 'Tab') {
                     key.classList.add('tab');
                 }
-                if (keyboardEn[i][j] === 'Delete') {
+                if (lang[i][j] === 'Delete') {
                     key.classList.add('del');
                     key.textContent = 'DEL';
                 }
-                if (keyboardEn[i][j] === 'CapsLock') {
+                if (lang[i][j] === 'CapsLock') {
                     key.classList.add('caps-lock');
                     key.textContent = 'Caps Lock';
                 }
-                if (keyboardEn[i][j] === 'Enter') {
+                if (lang[i][j] === 'Enter') {
                     key.classList.add('enter');
                     key.textContent = 'ENTER';
                 }
-                if (keyboardEn[i][j] === 'ShiftLeft') {
+                if (lang[i][j] === 'ShiftLeft') {
                     key.classList.add('left-shift');
                     key.textContent = 'Shift';
                 }
-                if (keyboardEn[i][j] === 'ShiftRight') {
+                if (lang[i][j] === 'ShiftRight') {
                     key.classList.add('right-shift');
                     key.textContent = 'Shift';
                 }
-                if (keyboardEn[i][j] === 'ControlLeft') {
+                if (lang[i][j] === 'ControlLeft') {
                     key.classList.add('left-ctrl');
                     key.textContent = 'Ctrl';
                 }
-                if (keyboardEn[i][j] === 'AltLeft') {
+                if (lang[i][j] === 'AltLeft') {
                     key.classList.add('left-alt');
                     key.textContent = 'Alt';
                 }
-                if (keyboardEn[i][j] === 'AltRight') {
+                if (lang[i][j] === 'AltRight') {
                     key.classList.add('right-alt');
                     key.textContent = 'Alt';
                 }
-                if (keyboardEn[i][j] === 'ControlRight') {
+                if (lang[i][j] === 'ControlRight') {
                     key.classList.add('right-ctrl');
                     key.textContent = 'Ctrl';
                 }
-                if (keyboardEn[i][j] === 'ArrowUp') {
+                if (lang[i][j] === 'ArrowUp') {
                     key.innerHTML = '&#9650;'
                 }
-                if (keyboardEn[i][j] === 'ArrowLeft') {
+                if (lang[i][j] === 'ArrowLeft') {
                     key.innerHTML = '&#9668;'
                 }
-                if (keyboardEn[i][j] === 'ArrowDown') {
+                if (lang[i][j] === 'ArrowDown') {
                     key.innerHTML = '&#9660;'
                 }
-                if (keyboardEn[i][j] === 'ArrowRight') {
+                if (lang[i][j] === 'ArrowRight') {
                     key.innerHTML = '&#9658;'
+                }
+                if (lang[i][j] === 'Meta') {
+                    key.textContent = 'Win';
                 }
 
                 key.classList.add('functional');
@@ -147,19 +171,57 @@ function createBtns() {
     }
 }
 
-const keys = document.querySelectorAll('.key');
+function createDescription() {
+    const descriptionBlock = createElem('div', 'description');
+    descriptionBlock.innerText = 'Клавиатура создана в Windows. Для переключения языка использовать левыe ctrl + alt. Переключение языка с русского на английский будет подсвечивать кнопки только когда будет совпадать язык компьютера и виртуальной клавиатуры. Косякнул, юзал везде event.key, на рефактор не хватило времени.'
+    container.append(descriptionBlock);
+}
+
+createDescription();
 
 document.addEventListener('keydown', (event) => {
+    const keys = document.querySelectorAll('.key');
+
+    //add class for push buttons
     keys.forEach(key => {
         if (key.textContent === event.key) {
             key.classList.add('press');
         };
-
     })
+
+    //remove class from buttons
+    if (event.altKey && event.ctrlKey) {
+        language === 'en' ? language = 'ru' : language = 'en';
+        language === 'en' ? createBtns(keyboardEn) : createBtns(keyboardRu);
+
+        localStorage.setItem('lang', language);
+    }
 })
 
 document.addEventListener('keyup', () => {
+    const keys = document.querySelectorAll('.key');
+
     keys.forEach(key => {
         key.classList.remove('press');
     })
+})
+
+//text input in textarea
+const textArea = document.querySelector('.textarea');
+const keyboard = document.querySelector('.keyboard-wrapper');
+
+keyboard.addEventListener('click', (event) => {
+    const target = event.target;
+
+    if (target.textContent === 'Tab') {
+        textArea.value +='    ';
+    }
+
+    if (target.textContent === 'ENTER') {
+        textArea.value +='\n';
+    }
+
+    if (target.classList.contains('key') && !target.classList.contains('functional')) {
+        textArea.value += target.closest('div').textContent;
+    }
 })

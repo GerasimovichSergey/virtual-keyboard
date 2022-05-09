@@ -1,1 +1,1 @@
-# virtual-keyboard Virtual keyboard by Gerasimovich Sergey
+# Virtual keyboard by Gerasimovich Sergey
