@@ -18,12 +18,12 @@ let language = 'en';
 function getLocalStorage() {
     if (localStorage.getItem('lang')) {
         const lang = localStorage.getItem('lang');
-        
-        lang === 'en' ? createBtns(keyboardEn) : createBtns(keyboardRu);
+
+        lang === 'en' ? language = 'en' : language = 'ru';
     }
 }
 
-window.addEventListener('load', getLocalStorage);
+getLocalStorage();
 
 function createElem(name, classList) {
     const elem = document.createElement(name);
