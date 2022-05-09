@@ -217,6 +217,10 @@ keyboard.addEventListener('click', (event) => {
         textArea.value +='    ';
     }
 
+    if (target.textContent === 'ENTER') {
+        textArea.value +='\n';
+    }
+
     if (target.classList.contains('key') && !target.classList.contains('functional')) {
         textArea.value += target.closest('div').textContent;
     }
