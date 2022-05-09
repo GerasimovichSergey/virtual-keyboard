@@ -11,6 +11,7 @@
     display: block;
     width: 750px;
     margin-bottom: 20px;
+    font-size: 22px;
 }
 
 .keyboard-wrapper {
@@ -29,6 +30,7 @@
 }
 
 .key {
+    cursor: pointer;
     width: 45px;
     height: 45px;
     background-color: #3d4b60;
@@ -37,6 +39,10 @@
     font-weight: 500;
     border-radius: 5px;
     transition: 0.1s;
+}
+
+.key:hover {
+    background-color: #79a9f2;
 }
 
 .functional {
@@ -65,7 +71,7 @@
 }
 
 .press {
-    background-color: #226870;
+    background-color: #3cd0e1;
 }
 
 .description {

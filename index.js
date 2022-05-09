@@ -45,7 +45,7 @@ function createTextArea() {
     const textArea = createElem('textarea', 'textarea');
     textArea.name = 'text';
     textArea.cols = '70';
-    textArea.rows = '10';
+    textArea.rows = '5';
     container.append(textArea);
 }
 
@@ -204,4 +204,20 @@ document.addEventListener('keyup', () => {
     keys.forEach(key => {
         key.classList.remove('press');
     })
+})
+
+//text input in textarea
+const textArea = document.querySelector('.textarea');
+const keyboard = document.querySelector('.keyboard-wrapper');
+
+keyboard.addEventListener('click', (event) => {
+    const target = event.target;
+
+    if (target.textContent === 'Tab') {
+        textArea.value +='    ';
+    }
+
+    if (target.classList.contains('key') && !target.classList.contains('functional')) {
+        textArea.value += target.closest('div').textContent;
+    }
 })
